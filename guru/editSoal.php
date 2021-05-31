@@ -1,14 +1,40 @@
 <?php
     require '../koneksi.php';
     require 'function/session.php';
-    require 'function/tambahSoal.php';
-    $id_tugas = $_GET['id_tugas'];
-    $readSoal = mysqli_query($koneksi, "SELECT * FROM soal WHERE id_tugas='$id_tugas'");
+    $id_soal = $_GET['id_soal'];
+    $readSoal = mysqli_query($koneksi, "SELECT * FROM soal WHERE id_soal='$id_soal'");
+    $soal = mysqli_fetch_array($readSoal);
+    $id_tugas = $soal['id_tugas'];
+    if (isset($_POST["editSoal"])) {
+        $id_soal = $_GET['id_soal'];
+        $soal = $_POST["soal"];
+        $a = $_POST["a"];
+        $b = $_POST["b"];
+        $c = $_POST["c"];
+        $d = $_POST["d"];
+        $jawaban = $_POST["jawaban"];
+        $updateSQL = mysqli_query($koneksi, "UPDATE soal SET soal='$soal', pil_a='$a', pil_b='$b', pil_c='$c', pil_d='$d', jawaban = '$jawaban' WHERE id_soal='$id_soal'") or die ($koneksi);
+        if ($updateSQL){
+            echo "
+                <script>
+                    alert('Soal berhasil diedit!');
+                    document.location.href = 'soal.php?id_tugas=$id_tugas';
+                </script>
+            ";
+        }
+        else {
+            echo "
+                <script>
+                    alert('Soal gagal diedit!');
+                    document.location.href = 'soal.php?id_tugas=$id_tugas';
+                </script>
+            ";
+        }
+    }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -17,7 +43,6 @@
     <link rel="stylesheet" href="../css/styles.css" />
     <title>Kelola Materi</title>
 </head>
-
 <body>
 <!-- Sidebar -->
     <div class="d-flex" id="wrapper">
@@ -51,46 +76,6 @@
             </nav>
             <div class="container-fluid px-4">
                 <div class="row my-2">
-                    <div class="table-responsive-xxl">
-                        <table class="table table-bordered table-light border-dark align-middle mx-auto">
-                            <thead class="text-center table-dark">
-                                <tr>
-                                    <td>Detail Soal</td>
-                                    <td style="width: 40px; max-width:40px">Aksi</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                    while ($row = mysqli_fetch_array($readSoal)){
-                                        $gambar = $row['gambar'];
-                                        echo '
-                                        <form action="" method="post">
-                                            <tr>
-                                                <td>
-                                                '.$row['soal'].'<br>';
-                                                if ($gambar=="") {
-                                                    echo '<br>';
-                                                } else {
-                                                    echo '<br><img src="../uploadSoal/'.$gambar.'" style="width: 100px; height: 100px;"><br><br>';
-                                                }
-                                                echo '
-                                                A. '.$row['pil_a'].'<br>
-                                                B. '.$row['pil_b'].'<br>
-                                                C. '.$row['pil_c'].'<br>
-                                                D. '.$row['pil_d'].'<br>
-                                                Kunci Jawaban : '.$row['jawaban'].'
-                                                </td>
-                                                <td>
-                                                    <a href="editSoal.php?id_soal='.$row['id_soal'].'" class="btn btn-primary mb-2"><i class="fas fa-edit" style="width:15px"></i></a>
-                                                    <a href="function/hapusSoal.php?id_tugas=$id_tugas&id_soal='.$row['id_soal'].'" class="btn btn-danger"><i class="fas fa-trash" style="width:15px"></i></a>
-                                                </td>
-                                            </tr>
-                                        </form>';
-                                    }
-                                ?>
-                            </tbody>
-                        </table>
-                    </div>
                     <div class="table-responsive-xxl mt-3">
                         <table class="table table-bordered table-light border-dark align-middle mx-auto">
                             <tr class="table-dark text-center">
@@ -100,12 +85,13 @@
                                 <td colspan="2">
                                     <div class="my-2">
                                     <form action="" method="post" enctype="multipart/form-data">
-                                        Pertanyaan: <textarea name="soal" class="form-control w-100"></textarea><br>
-                                        Gambar (Jika ada) : <input type="file" name="fileSoal" id="file" class="form-control"><br>
-                                        Jawaban A : <input type="text" name="a" class="form-control"><br>
-                                        Jawaban B : <input type="text" name="b" class="form-control"><br>
-                                        Jawaban C : <input type="text" name="c" class="form-control"><br>
-                                        Jawaban D : <input type="text" name="d" class="form-control"><br>
+                                    <?php
+                                    echo '
+                                        Pertanyaan: <textarea name="soal" class="form-control w-100">'.$soal["soal"].'</textarea><br>
+                                        Jawaban A : <input type="text" name="a" class="form-control" value="'.$soal["pil_a"].'"><br>
+                                        Jawaban B : <input type="text" name="b" class="form-control" value="'.$soal["pil_b"].'"><br>
+                                        Jawaban C : <input type="text" name="c" class="form-control" value="'.$soal["pil_c"].'"><br>
+                                        Jawaban D : <input type="text" name="d" class="form-control" value="'.$soal["pil_d"].'"><br>
                                         <label>Kunci Jawaban :</label>
                                             <select name="jawaban"  class="form-select text-center" style="width: 100px;">
                                                 <option value="A">A</option>
@@ -114,8 +100,10 @@
                                                 <option value="D">D</option>
                                             </select><br>
                                         <div class="text-center">
-                                            <button type="submit" name="tambahSoal" class="btn btn-primary w-25">Tambah</button>
+                                            <button type="submit" name="editSoal" class="btn btn-primary w-25">Simpan</button>
                                         </div>
+                                    ';
+                                    ?>
                                     </form>
                                     </div>
                                 </td>
@@ -138,5 +126,4 @@
         };
     </script>
 </body>
-
 </html>

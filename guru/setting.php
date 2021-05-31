@@ -95,7 +95,7 @@
                     <div class="col-xxl-5">
                         <?php
                             echo '
-                            <form method="post" class="text-center mx-5">
+                            <form action="function/updateUser.php?id='.$row['id'].'" method="post" class="text-center mx-5">
                                 <input type="hidden" name="id" class="form-control" value="'.$row['id'].'">
                                 <input type="text" name="nama" class="form-control m-3 justify-content-center" value="'.$row['nama'].'">
                                 <input type="text" name="jk" class="form-control m-3" value="'.$row['jk'].'">
@@ -103,7 +103,7 @@
                                 <input type="text" name="wa" class="form-control m-3" value="'.$row['wa'].'">
                                 <input type="password" name="password1" class="form-control m-3" placeholder="Masukan Password Lama">
                                 <input type="password" name="password2" class="form-control m-3" placeholder="Masukan Password Baru">
-                                <a href="function/updateUser.php?id='.$row['id'].'" class="btn btn-primary px-5">Simpan</a>
+                                <button type="submit" class="btn btn-primary px-5">Simpan</button>
                             </form>
                             '
                         ?>
