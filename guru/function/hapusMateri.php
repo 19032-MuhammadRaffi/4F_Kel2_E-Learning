@@ -4,7 +4,7 @@
     $cariFile = mysqli_query($koneksi, "SELECT file_materi FROM materi WHERE id_materi = $id_materi") or die(mysqli_error($koneksi));
     $cariRow = mysqli_fetch_array($cariFile);
     $namaFile = $cariRow['file_materi'];
-    $lokasi = "../../upload/".$namaFile;
+    $lokasi = "../../uploadMateri/".$namaFile;
     if (file_exists($lokasi)){
         unlink($lokasi);
     }
