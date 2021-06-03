@@ -35,8 +35,9 @@
                     <i class="fas fa-chart-bar me-2"></i>Nilai</a>
                 <a href="setting.php" class="list-group-item list-group-item-action bg-transparent warna-1 fw-bold">
                     <i class="fas fa-users-cog me-2"></i>Pengaturan Akun</a>
-                <a href="../logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">
-                    <i class="fas fa-power-off me-2"></i>Logout</a>
+                <a href="../logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"
+                onclick="return confirm('Keluar ?')">
+                    <i class="fas fa-power-off me-2"></i>Keluar</a>
             </div>
         </div>
 <!-- Status Bar -->
@@ -111,7 +112,8 @@
                                                     <td>'.$waktu.' Menit</td>
                                                     <td><span class="badge bg-danger">Belom Dikerjakan</span></td>
                                                     <td>
-                                                        <a href="nilai.php" class="btn btn-primary w-100">Hasil</a>
+                                                        <a href="soal.php?id_tugas='.$row['id_tugas'].'" class="btn btn-primary w-100"><i class="fas fa-pen-alt me-2"></i>Kerjakan</a>
+                                                        
                                                     </td>
                                                 </tr>
                                             </form>';
@@ -124,7 +126,7 @@
                                                     <td>'.$waktu.' Menit</td>
                                                     <td><span class="badge bg-success">Selesai</span></td>
                                                     <td>
-                                                        <a href="soal.php?id_tugas='.$row['id_tugas'].'" class="btn btn-primary w-100"><i class="fas fa-pen-alt me-2"></i>Kerjakan</a>
+                                                        <a href="nilai.php" class="btn btn-primary w-100"><i class="fas fa-poll me-2"></i>Hasil</a>
                                                     </td>
                                                 </tr>
                                             </form>';
@@ -136,14 +138,14 @@
                     </div>
                 </div>
             </div>
+<!-- Footer -->
+            <footer class="footer mt-auto pb-4 bg-transparant fixed-bottom">   
+                <div class="container-fluid text-center">
+                    <span class="text-muted">Dibuat penuh ❤️ Kelompok 2 - 4F &copy 2021</span>
+                </div>
+            </footer>
         </div>
     </div>
-<!-- Footer -->
-    <footer class="footer mt-auto py-3 bg-transparant fixed-bottom">   
-        <div class="container-fluid text-center">
-            <span class="text-muted">Dibuat penuh ❤️ Kelompok 2 - 4F &copy 2021</span>
-        </div>
-    </footer>
 <!-- Javascript -->
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../js/bootstrap.js"></script>

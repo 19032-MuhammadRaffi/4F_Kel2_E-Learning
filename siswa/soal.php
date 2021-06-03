@@ -1,13 +1,12 @@
 <?php
     require '../koneksi.php';
     require 'function/session.php';
-    $id_tugas = $_GET['id_tugas'];
+    $id_tugas = $_GET["id_tugas"];
     $readSoal = mysqli_query($koneksi, "SELECT * FROM soal WHERE id_tugas='$id_tugas'");
+    $jmlSoal = mysqli_num_rows($readSoal);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -16,7 +15,6 @@
     <link rel="stylesheet" href="../css/styles.css" />
     <title>Materi</title>
 </head>
-
 <body>
 <!-- Sidebar -->
     <div class="d-flex" id="wrapper">
@@ -34,8 +32,9 @@
                     <i class="fas fa-chart-bar me-2"></i>Nilai</a>
                 <a href="setting.php" class="list-group-item list-group-item-action bg-transparent warna-1 fw-bold">
                     <i class="fas fa-users-cog me-2"></i>Pengaturan Akun</a>
-                <a href="../logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">
-                    <i class="fas fa-power-off me-2"></i>Logout</a>
+                <a href="../logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"
+                onclick="return confirm('Keluar ?')">
+                    <i class="fas fa-power-off me-2"></i>Keluar</a>
             </div>
         </div>
 <!-- Content -->
@@ -57,13 +56,18 @@
                             </thead>
                             <tbody>
                                 <?php
+                                    $i = 0;
                                     while ($row = mysqli_fetch_array($readSoal)){
-                                        $gambar = $row['gambar'];
+                                        $i++;
+                                        $gambar = $row["gambar"];
+                                        $id_soal = $row["id_soal"];
                                         echo '
-                                        <form action="" method="post">
+                                        <form action="function/kirimJawaban.php?id_tugas='.$id_tugas.'" method="post">
+                                            <input type="hidden" name="id[]" value="'.$row["id_soal"].'">
+                                            <input type="hidden" name="jmlSoal" value="'.$jmlSoal.'">
                                             <tr>
                                                 <td>
-                                                    '.$row['soal'].'<br>';
+                                                    '.$i.'. '.$row["soal"].'<br>';
                                                     if ($gambar=="") {
                                                         echo '<br>';
                                                     } else {
@@ -71,31 +75,29 @@
                                                     }
                                                     echo '
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="a" value="'.$row['pil_a'].'">
-                                                        <label class="form-check-label" for="a">A. '.$row['pil_a'].'</label>
+                                                        <input name="pilihan['.$id_soal.']" class="form-check-input" type="radio" name="jawaban" value="A">
+                                                        <label class="form-check-label" for="a">A. '.$row["pil_a"].'</label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="b" value="'.$row['pil_b'].'">
-                                                        <label class="form-check-label" for="b">B. '.$row['pil_b'].'</label>
+                                                        <input  name="pilihan['.$id_soal.']"class="form-check-input" type="radio" name="jawaban" value="B">
+                                                        <label class="form-check-label" for="b">B. '.$row["pil_b"].'</label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="c" value="'.$row['pil_c'].'">
-                                                        <label class="form-check-label" for="c">C. '.$row['pil_c'].'</label>
+                                                        <input  name="pilihan['.$id_soal.']"class="form-check-input" type="radio" name="jawaban" value="C">
+                                                        <label class="form-check-label" for="c">C. '.$row["pil_c"].'</label>
                                                     </div>
                                                     <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="d" value="'.$row['pil_d'].'">
-                                                        <label class="form-check-label" for="d">D. '.$row['pil_d'].'</label>
+                                                        <input  name="pilihan['.$id_soal.']"class="form-check-input" type="radio" name="jawaban" value="D">
+                                                        <label class="form-check-label" for="d">D. '.$row["pil_d"].'</label>
                                                     </div>
-                                                    <input type="hidden" value="'.$row['jawaban'].'" name="kunci">
-                                                
                                                 </td>
-                                            </tr>
-                                        </form>';
+                                            </tr>';
                                     }
                                 ?>
-                                <tr>
-                                    <td class="text-center"><button class="btn btn-primary">Submit</button></td>
-                                </tr>
+                                    <tr>
+                                        <td class="text-center"><input type="submit" class="btn btn-primary" name="kirim" value="Submit" onclick="return confirm('Perhatian! Apakah Anda sudah yakin dengan semua jawaban Anda?')"></td>
+                                    </tr>
+                                </form>;
                             </tbody>
                         </table>
                     </div>

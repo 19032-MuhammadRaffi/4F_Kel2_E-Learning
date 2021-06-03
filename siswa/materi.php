@@ -35,8 +35,9 @@
                     <i class="fas fa-chart-bar me-2"></i>Nilai</a>
                 <a href="setting.php" class="list-group-item list-group-item-action bg-transparent warna-1 fw-bold">
                     <i class="fas fa-users-cog me-2"></i>Pengaturan Akun</a>
-                <a href="../logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">
-                    <i class="fas fa-power-off me-2"></i>Logout</a>
+                <a href="../logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"
+                onclick="return confirm('Keluar ?')">
+                    <i class="fas fa-power-off me-2"></i>Keluar</a>
             </div>
         </div>
 <!-- Status Bar -->
@@ -97,14 +98,14 @@
                                 <?php
                                     while ($row = mysqli_fetch_array($query)){
                                         echo '
-                                        <form action="" method="post">
+                                        <form action="function/downloadMateri.php?file_materi='.$row['file_materi'].'" method="post">
                                             <tr>
                                                 <td>'.$row['id'].'</td>
                                                 <td>'.$row['judul_materi'].'</td>
                                                 <td>'.$row['file_materi'].'</td>
                                                 <td>'.$row['tgl_dibuat'].'</td>
                                                 <td>
-                                                    <a href="function/downloadMateri.php?file_materi='.$row['file_materi'].'" class="btn btn-primary"><i class="fas fa-download"></i></a>
+                                                    '?><button type="submit" class="btn btn-primary" onclick="return confirm('Download materi?')"><i class="fas fa-download"></i></button><?php echo '
                                                 </td>
                                             </tr>
                                         </form>';
@@ -115,14 +116,14 @@
                     </div>
                 </div>
             </div>
+<!-- Footer -->
+            <footer class="footer mt-auto pb-4 bg-transparant fixed-bottom">   
+                <div class="container-fluid text-center">
+                    <span class="text-muted">Dibuat penuh ❤️ Kelompok 2 - 4F &copy 2021</span>
+                </div>
+            </footer>
         </div>
     </div>
-<!-- Footer -->
-    <footer class="footer mt-auto py-3 bg-transparant fixed-bottom">   
-        <div class="container-fluid text-center">
-            <span class="text-muted">Dibuat penuh ❤️ Kelompok 2 - 4F &copy 2021</span>
-        </div>
-    </footer>
 <!-- Javascript -->
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../js/bootstrap.js"></script>

@@ -36,8 +36,9 @@
                     <i class="fas fa-chart-bar me-2"></i>Nilai</a>
                 <a href="setting.php" class="list-group-item list-group-item-action bg-transparent warna-1 fw-bold  active-bar">
                     <i class="fas fa-users-cog me-2"></i>Pengaturan Akun</a>
-                <a href="../logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">
-                    <i class="fas fa-power-off me-2"></i>Logout</a>
+                <a href="../logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"
+                onclick="return confirm('Keluar ?')">
+                    <i class="fas fa-power-off me-2"></i>Keluar</a>
             </div>
         </div>
 <!-- Status Bar -->
@@ -93,7 +94,7 @@
                     <div class="col-xxl-5">
                         <?php
                             echo '
-                            <form method="post" class="text-center mx-5">
+                            <form action="function/updateUser.php?id='.$row['id'].'" method="post" class="text-center mx-5">
                                 <input type="hidden" name="id" class="form-control" value="'.$row['id'].'">
                                 <input type="text" name="nama" class="form-control m-3 justify-content-center" value="'.$row['nama'].'">
                                 <input type="text" name="jk" class="form-control m-3" value="'.$row['jk'].'">
@@ -101,21 +102,21 @@
                                 <input type="text" name="wa" class="form-control m-3" value="'.$row['wa'].'">
                                 <input type="password" name="password1" class="form-control m-3" placeholder="Masukan Password Lama">
                                 <input type="password" name="password2" class="form-control m-3" placeholder="Masukan Password Baru">
-                                <a href="function/updateUser.php?id='.$row['id'].'" class="btn btn-primary px-5">Simpan</a>
+                                '?><button type="submit" class="btn btn-primary px-5" onclick="return confirm('Proses data akun?')">Simpan</button><?php echo '
                             </form>
                             '
                         ?>
                     </div>
                 </div>
             </div>
+<!-- Footer -->
+            <footer class="footer mt-auto pb-4 bg-transparant fixed-bottom">   
+                <div class="container-fluid text-center">
+                    <span class="text-muted">Dibuat penuh ❤️ Kelompok 2 - 4F &copy 2021</span>
+                </div>
+            </footer>
         </div>
     </div>
-<!-- Footer -->
-    <footer class="footer mt-auto py-3 bg-transparant fixed-bottom">   
-        <div class="container-fluid text-center">
-            <span class="text-muted">Dibuat penuh ❤️ Kelompok 2 - 4F &copy 2021</span>
-        </div>
-    </footer>
 <!-- Javascript -->
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../js/bootstrap.js"></script>
