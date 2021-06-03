@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="../css/styles.css" />
     <title>Kelola Tugas</title>
 </head>
-
 <body>
 <!-- Sidebar -->
     <div class="d-flex" id="wrapper">
@@ -27,7 +26,7 @@
                 <i class="fas fa-user-secret me-2"></i>E-Learning</div>
             <div class="list-group list-group-flush my-3">
                 <a href="index.php" class="list-group-item list-group-item-action bg-transparent warna-1 fw-bold">
-                    <i class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <i class="fas fa-tachometer-alt me-2"></i>Beranda</a>
                 <a href="materi.php" class="list-group-item list-group-item-action bg-transparent warna-1 fw-bold">
                     <i class="fas fa-book-reader me-2"></i>Kelola Materi</a>
                 <a href="tugas.php" class="list-group-item list-group-item-action bg-transparent warna-1 fw-bold active-bar">
@@ -38,8 +37,9 @@
                     <i class="fas fa-users-cog me-2"></i>Kelola Siswa</a>
                     <a href="setting.php" class="list-group-item list-group-item-action bg-transparent warna-1 fw-bold">
                     <i class="fas fa-users-cog me-2"></i>Pengaturan Akun</a>
-                <a href="../logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">
-                    <i class="fas fa-power-off me-2"></i>Logout</a>
+                <a href="../logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"
+                onclick="return confirm('Keluar ?')">
+                    <i class="fas fa-power-off me-2"></i>Keluar</a>
             </div>
         </div>
 <!-- Status Bar -->
@@ -132,20 +132,20 @@
                                 </tr>
                             </thead>
                             <tbody class="table-light border-dark">
-                                <?php
+                            <?php
                                     while ($row = mysqli_fetch_array($query)){
                                         $queryID = mysqli_query($koneksi, "SELECT * FROM user WHERE id='$row[id]'");
                                         $rowUser = mysqli_fetch_array($queryID);
                                         $waktu = $row['waktu']/60;
                                         echo '
-                                        <form action="" method="post">
+                                        <form action="function/hapusTugas.php?id_tugas='.$row['id_tugas'].'" method="post">
                                             <tr>
                                                 <td>'.$rowUser['nama'].'</td>
                                                 <td>'.$row['judul'].'</td>
                                                 <td>'.$waktu.' Menit</td>
                                                 <td>
                                                     <a href="soal.php?id_tugas='.$row['id_tugas'].'" class="btn btn-primary"><i class="fas fa-plus me-2"></i>Tambah Soal</a>
-                                                    <a href="function/hapusTugas.php?id_tugas='.$row['id_tugas'].'" class="btn btn-danger"><i class="fas fa-trash me-2"></i>Hapus Tugas</a>
+                                                    '?><button type="submit" class="btn btn-danger" onclick="return confirm('Hapus tugas?')"><i class="fas fa-trash me-2"></i>Hapus Tugas</button><?php echo '
                                                 </td>
                                             </tr>
                                         </form>';
@@ -156,14 +156,14 @@
                     </div>
                 </div>
             </div>
+<!-- Footer -->
+            <footer class="footer mt-auto pb-4 bg-transparant fixed-bottom">   
+                <div class="container-fluid text-center">
+                    <span class="text-muted">Dibuat penuh ❤️ Kelompok 2 - 4F &copy 2021</span>
+                </div>
+            </footer>
         </div>
     </div>
-<!-- Footer -->
-    <footer class="footer mt-auto py-3 bg-transparant fixed-bottom">   
-        <div class="container-fluid text-center">
-            <span class="text-muted">Dibuat penuh ❤️ Kelompok 2 - 4F &copy 2021</span>
-        </div>
-    </footer>
 <!-- Javascript -->
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../js/bootstrap.js"></script>

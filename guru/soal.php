@@ -26,7 +26,7 @@
                 <i class="fas fa-user-secret me-2"></i>E-Learning</div>
             <div class="list-group list-group-flush my-3">
                 <a href="index.php" class="list-group-item list-group-item-action bg-transparent fw-bold warna-1">
-                    <i class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <i class="fas fa-tachometer-alt me-2"></i>Beranda</a>
                 <a href="materi.php" class="list-group-item list-group-item-action bg-transparent warna-1 fw-bold">
                     <i class="fas fa-book-reader me-2"></i>Kelola Materi</a>
                 <a href="tugas.php" class="list-group-item list-group-item-action bg-transparent warna-1 fw-bold active-bar">
@@ -37,8 +37,9 @@
                     <i class="fas fa-users-cog me-2"></i>Kelola Siswa</a>
                 <a href="setting.php" class="list-group-item list-group-item-action bg-transparent warna-1 fw-bold">
                     <i class="fas fa-users-cog me-2"></i>Pengaturan Akun</a>
-                <a href="../logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">
-                    <i class="fas fa-power-off me-2"></i>Logout</a>
+                <a href="../logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"
+                onclick="return confirm('Keluar ?')">
+                    <i class="fas fa-power-off me-2"></i>Keluar</a>
             </div>
         </div>
 <!-- Content -->
@@ -64,7 +65,7 @@
                                     while ($row = mysqli_fetch_array($readSoal)){
                                         $gambar = $row['gambar'];
                                         echo '
-                                        <form action="" method="post">
+                                        <form action="function/hapusSoal.php?id_tugas='.$id_tugas.'&id_soal='.$row['id_soal'].'" method="post">
                                             <tr>
                                                 <td>
                                                 '.$row['soal'].'<br>';
@@ -82,7 +83,7 @@
                                                 </td>
                                                 <td>
                                                     <a href="editSoal.php?id_soal='.$row['id_soal'].'" class="btn btn-primary mb-2"><i class="fas fa-edit" style="width:15px"></i></a>
-                                                    <a href="function/hapusSoal.php?id_tugas=$id_tugas&id_soal='.$row['id_soal'].'" class="btn btn-danger"><i class="fas fa-trash" style="width:15px"></i></a>
+                                                    '?><button type="submit" class="btn btn-danger" onclick="return confirm('Hapus soal?')"><i class="fas fa-trash me-2" style="width:7px"></i></button><?php echo '
                                                 </td>
                                             </tr>
                                         </form>';

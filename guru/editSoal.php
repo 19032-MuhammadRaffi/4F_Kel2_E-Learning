@@ -51,7 +51,7 @@
                 <i class="fas fa-user-secret me-2"></i>E-Learning</div>
             <div class="list-group list-group-flush my-3">
                 <a href="index.php" class="list-group-item list-group-item-action bg-transparent fw-bold warna-1">
-                    <i class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <i class="fas fa-tachometer-alt me-2"></i>Beranda</a>
                 <a href="materi.php" class="list-group-item list-group-item-action bg-transparent warna-1 fw-bold">
                     <i class="fas fa-book-reader me-2"></i>Kelola Materi</a>
                 <a href="tugas.php" class="list-group-item list-group-item-action bg-transparent warna-1 fw-bold active-bar">
@@ -62,8 +62,9 @@
                     <i class="fas fa-users-cog me-2"></i>Kelola Siswa</a>
                 <a href="setting.php" class="list-group-item list-group-item-action bg-transparent warna-1 fw-bold">
                     <i class="fas fa-users-cog me-2"></i>Pengaturan Akun</a>
-                <a href="../logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">
-                    <i class="fas fa-power-off me-2"></i>Logout</a>
+                <a href="../logout.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"
+                onclick="return confirm('Keluar ?')">
+                    <i class="fas fa-power-off me-2"></i>Keluar</a>
             </div>
         </div>
 <!-- Content -->
@@ -100,7 +101,7 @@
                                                 <option value="D">D</option>
                                             </select><br>
                                         <div class="text-center">
-                                            <button type="submit" name="editSoal" class="btn btn-primary w-25">Simpan</button>
+                                            '?><button type="submit" name="editSoal" class="btn btn-primary w-25" onclick="return confirm('Edit soal?')">Simpan</button><?php echo '
                                         </div>
                                     ';
                                     ?>
