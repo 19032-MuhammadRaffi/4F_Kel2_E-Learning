@@ -5,26 +5,26 @@
 <html>
  	<head>
 	    <link rel="stylesheet" href="css/login.css" />
-	    <title>Sign in & Sign up Form</title>
+	    <title>E-Learning</title>
 </head>
 <body>
 	<div class="container">
 		<div class="forms-container">
         	<div class="signin-signup">
           		<form action="" method="post" class="sign-in-form">
-	            	<h2 class="title">Sign in</h2>
+	            	<h2 class="title">Masuk</h2>
 		            <div class="input-field">
 		            	<i class="fas fa-user"></i>
 		              	<input type="text" name="id" placeholder="NIS" required />
 		            </div>
 		            <div class="input-field">
 		              	<i class="fas fa-lock"></i>
-		              	<input type="password" name="password" placeholder="Password" required />
+		              	<input type="password" name="password" placeholder="Kata Sandi" required />
 		            </div>
-					<button type="submit" name="signIn" class="btn">Sign In</button>
+					<button type="submit" name="signIn" class="btn">Masuk</button>
 		        </form>
 	          	<form action="" method="post" class="sign-up-form" >
-		            <h2 class="title">Sign up</h2>
+		            <h2 class="title">Daftar</h2>
 		            <div class="form-check form-check-inline text-white">
 		              	<input class="form-check-input" type="radio" name="user" id="guru" value="Guru" required>
 						<label for="guru" style="color: white; margin-right: 20px;">Guru</label>
@@ -55,16 +55,16 @@
 		              	<i class="fas fa-map-marker"></i>
 		              	<input type="text" name="alamat" placeholder="Alamat" required/>
 		            </div>
-					<button type="submit" name="signUp" class="btn">Sign Up</button>
+					<button type="submit" name="signUp" class="btn">Daftar</button>
           		</form>
 			</div>
 		</div>
 		<div class="panels-container">
         	<div class="panel left-panel">
           		<div class="content">
-	            	<h3>New here ?</h3>
+	            	<h3>Belum Punya Akun ?</h3>
 	            	<p>E-Lerning SMKN 1 Olympus, Jurusan Rekayasa Perangkat Lunak, Mata Pelajaran Pemrograman Berbasis Web</p>
-	            	<button class="btn transparent" id="sign-up-btn">Sign up</button>
+	            	<button class="btn transparent" id="sign-up-btn">Daftar</button>
           		</div>
         		<img src="img/log.svg" class="image" alt="" />
         	</div>
@@ -72,7 +72,7 @@
           		<div class="content">
 	            	<h3>Have Account ?</h3>
 	            	<p>E-Lerning SMKN 1 Olympus, Jurusan Rekayasa Perangkat Lunak, Mata Pelajaran Pemrograman Berbasis Web</p>
-	            	<button class="btn transparent" id="sign-in-btn">Sign in</button>
+	            	<button class="btn transparent" id="sign-in-btn">Masuk</button>
           		</div>
           		<img src="img/register.svg" class="image" alt="" />
         	</div>

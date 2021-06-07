@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Bulan Mei 2021 pada 02.54
+-- Waktu pembuatan: 04 Jun 2021 pada 06.29
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.3.13
 
@@ -41,12 +41,7 @@ CREATE TABLE `materi` (
 --
 
 INSERT INTO `materi` (`id_materi`, `id`, `judul_materi`, `file_materi`, `tgl_dibuat`) VALUES
-(38, '19032', 'Pertemuan 1', 'PBO_Unsika_1.pptx', '2021-04-30'),
-(39, '19032', 'Pertemuan 2', 'PBO_Unsika_2.pptx', '2021-04-30'),
-(40, '19032', 'Pertemuan 3', 'PBO_Unsika_3.pptx', '2021-04-30'),
-(41, '19032', 'Pertemuan 4', 'PBO_Unsika_4.pptx', '2021-04-30'),
-(42, '19032', 'Pertemuan 5', 'PBO_Unsika_5.pptx', '2021-04-30'),
-(43, '19032', 'Pertemuan 6', 'PBO_Unsika_6.pptx', '2021-04-30');
+(54, '19110', 'Materi 1', '60b88bcea15ab.pptx', '2021-06-03');
 
 -- --------------------------------------------------------
 
@@ -66,8 +61,8 @@ CREATE TABLE `nilai` (
 --
 
 INSERT INTO `nilai` (`id_nilai`, `id_tugas`, `id`, `nilai`) VALUES
-(4, 1, '19033', 90),
-(5, 5, '19033', 95);
+(139, 1, '19200', 50),
+(140, 1, '19100', 50);
 
 -- --------------------------------------------------------
 
@@ -93,10 +88,12 @@ CREATE TABLE `soal` (
 --
 
 INSERT INTO `soal` (`id_soal`, `id_tugas`, `soal`, `gambar`, `pil_a`, `pil_b`, `pil_c`, `pil_d`, `jawaban`, `tgl_dibuat`) VALUES
-(12, 1, 'Apa yang dimaksud dengan Snap', '6094575301f70.jpg', 'Ruang', 'Waktu', 'Penyimpanan', 'Alokasi', 'A', '2021-05-07'),
+(12, 1, 'Apa yang dimaksud dengan Snaping', '6094575301f70.jpg', 'Ruang', 'Waktu', 'Penyimpanan', 'Alokasi', 'A', '2021-05-07'),
 (13, 1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus voluptate id nihil nostrum, distinctio temporibus delectus a reprehenderit perspiciatis ad expedita nobis quam ea quae nisi quod atque voluptas. Libero!', '', 'Lorem A', 'Lorem B', 'Lorem C', 'Lorem D', 'A', '2021-05-07'),
 (14, 1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus voluptate id nihil nostrum, distinctio temporibus delectus a reprehenderit perspiciatis ad expedita nobis quam ea quae nisi quod atque voluptas. Libero!', '', 'Lorem A', 'Lorem B', 'Lorem C', 'Lorem D', 'C', '2021-05-07'),
-(15, 1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus voluptate id nihil nostrum, distinctio temporibus delectus a reprehenderit perspiciatis ad expedita nobis quam ea quae nisi quod atque voluptas. Libero!', '', 'Lorem A', 'Lorem B', 'Lorem C', 'Lorem D', 'D', '2021-05-07');
+(15, 1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus voluptate id nihil nostrum, distinctio temporibus delectus a reprehenderit perspiciatis ad expedita nobis quam ea quae nisi quod atque voluptas. Libero!', '', 'Lorem A', 'Lorem B', 'Lorem C', 'Lorem D', 'D', '2021-05-07'),
+(19, 8, 'Pertanyaan 1', '', 'Lorem A', 'Lorem B', 'Lorem C', 'Lorem D', 'A', '2021-05-31'),
+(20, 8, 'Pertanyaan 2', '', 'Lorem A', 'Lorem B', 'Lorem C', 'Lorem D', 'A', '2021-05-31');
 
 -- --------------------------------------------------------
 
@@ -107,18 +104,17 @@ INSERT INTO `soal` (`id_soal`, `id_tugas`, `soal`, `gambar`, `pil_a`, `pil_b`, `
 CREATE TABLE `tugas` (
   `id_tugas` int(11) NOT NULL,
   `id` varchar(16) NOT NULL,
-  `judul` varchar(50) NOT NULL,
-  `waktu` int(50) NOT NULL
+  `judul` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tugas`
 --
 
-INSERT INTO `tugas` (`id_tugas`, `id`, `judul`, `waktu`) VALUES
-(1, '19032', 'Latihan 1', 3600),
-(5, '19032', 'Latihan 2', 3600),
-(7, '19032', 'Praktikum 1', 3600);
+INSERT INTO `tugas` (`id_tugas`, `id`, `judul`) VALUES
+(1, '19032', 'Latihan 1'),
+(8, '19032', 'Latihan 2'),
+(9, '19110', 'UAS');
 
 -- --------------------------------------------------------
 
@@ -141,8 +137,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `password`, `nama`, `jk`, `wa`, `alamat`, `status`) VALUES
-('19032', 'caf1a3dfb505ffed0d024130f58c5cfa', 'Muhammad Raffi', 'L', '081315550739', 'Perumnas Bumi Telukjambe Blok PC No.15', 'Guru'),
-('19033', '202cb962ac59075b964b07152d234b70', 'Siswa 1', 'L', '081315550739', 'Perumnas Bumi Telukjambe Blok PC No.15', 'Siswa');
+('19032', '202cb962ac59075b964b07152d234b70', 'Muhammad Raffi', 'L', '081315550739', 'Perumnas Bumi Telukjambe Blok PC No.15', 'Guru'),
+('19100', '202cb962ac59075b964b07152d234b70', 'Ramadhan', 'L', '08131552131', 'Bekasi', 'Siswa'),
+('19110', '202cb962ac59075b964b07152d234b70', 'Ibrohim Husain', 'L', '08131552131', 'Cikampek', 'Guru'),
+('19200', '827ccb0eea8a706c4c34a16891f84e7b', 'Ivan Rizwan M.D', 'L', '08131552122', 'Karawang', 'Siswa');
 
 --
 -- Indexes for dumped tables
@@ -192,25 +190,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `materi`
 --
 ALTER TABLE `materi`
-  MODIFY `id_materi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id_materi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT untuk tabel `nilai`
 --
 ALTER TABLE `nilai`
-  MODIFY `id_nilai` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_nilai` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
 
 --
 -- AUTO_INCREMENT untuk tabel `soal`
 --
 ALTER TABLE `soal`
-  MODIFY `id_soal` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_soal` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT untuk tabel `tugas`
 --
 ALTER TABLE `tugas`
-  MODIFY `id_tugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_tugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

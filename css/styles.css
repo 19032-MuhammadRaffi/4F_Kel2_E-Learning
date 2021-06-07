@@ -1,0 +1,88 @@
+.warna-1 {
+  	color: #fff;
+}
+.warna-2 {
+  	color: #1db954;
+}
+.bg-1 {
+  	background-color: #1db954;
+}
+.bg-2 {
+  	background-color: #212121;
+}
+.bg-3 {
+	background-color: #121212;
+}
+.bg-4 {
+	background-color: #535353;
+}
+.bg-5 {
+	background-color: #b3b3b3;
+}
+.active-bar {
+	color: #1db954;
+}
+.active-bar:hover:active:visited{
+	color: #1db954;
+}
+.rounded-full {
+  	border-radius: 100%;
+}
+.btnInput{
+	width: 170px;
+}
+#wrapper {
+  	overflow-x: hidden;
+  	background-color: #212121;
+}
+#sidebar-wrapper {
+ 	min-height: 100vh;
+  	margin-left: -15rem;
+  	-webkit-transition: margin 0.25s ease-out;
+  	-moz-transition: margin 0.25s ease-out;
+  	-o-transition: margin 0.25s ease-out;
+  	transition: margin 0.25s ease-out;
+}
+#sidebar-wrapper .sidebar-heading {
+  	padding: 0.875rem 1.25rem;
+  	font-size: 1.2rem;
+}
+#sidebar-wrapper .list-group {
+  	width: 15rem;
+}
+
+#page-content-wrapper {
+  	min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  	margin-left: 0;
+}
+#menu-toggle {
+  	cursor: pointer;
+}
+
+.list-group-item {
+  	border: none;
+  	padding: 20px 30px;
+}
+.list-group-item.active {
+  	background-color: transparent;
+  	color: #276678;
+  	font-weight: bold;
+  	border: none;
+}
+
+@media (min-width: 768px) {
+  	#sidebar-wrapper {
+    	margin-left: 0;
+  	}
+
+  	#page-content-wrapper {
+   		min-width: 0;
+    	width: 100%;
+  	}
+  	#wrapper.toggled #sidebar-wrapper {
+    	margin-left: -15rem;
+  	}
+}

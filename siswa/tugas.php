@@ -90,7 +90,6 @@
                                 <tr>
                                     <th style="width: 25%;">Guru</th>
                                     <th style="width: 40%;">Judul Tugas</th>
-                                    <th style="width: 15%;">Waktu Pengerjaan</th>
                                     <th style="width: 10%;">Status</th>
                                     <th style="width: 10%;">Aksi</th>
                                 </tr>
@@ -102,14 +101,12 @@
                                         $rowUser = mysqli_fetch_array($queryID);
                                         $queryTgs = mysqli_query($koneksi, "SELECT * FROM nilai WHERE id=$id AND id_tugas=$row[id_tugas]");
                                         $rowTgs = mysqli_fetch_array($queryTgs);
-                                        $waktu = $row['waktu']/60;
                                         if ($rowTgs==0) {
                                             echo '
                                             <form action="" method="post">
                                                 <tr>
                                                     <td>'.$rowUser['nama'].'</td>
                                                     <td>'.$row['judul'].'</td>
-                                                    <td>'.$waktu.' Menit</td>
                                                     <td><span class="badge bg-danger">Belom Dikerjakan</span></td>
                                                     <td>
                                                         <a href="soal.php?id_tugas='.$row['id_tugas'].'" class="btn btn-primary w-100"><i class="fas fa-pen-alt me-2"></i>Kerjakan</a>
@@ -123,7 +120,6 @@
                                                 <tr>
                                                     <td>'.$rowUser['nama'].'</td>
                                                     <td>'.$row['judul'].'</td>
-                                                    <td>'.$waktu.' Menit</td>
                                                     <td><span class="badge bg-success">Selesai</span></td>
                                                     <td>
                                                         <a href="nilai.php" class="btn btn-primary w-100"><i class="fas fa-poll me-2"></i>Hasil</a>

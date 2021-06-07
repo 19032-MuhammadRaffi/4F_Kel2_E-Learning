@@ -106,10 +106,6 @@
                                             <label for="judul" class="me-5 fw-bold d-block">Judul Tugas</label>
                                             <input type="text" name="judul" id="judul" class="form-control w-75">
                                         </li>
-                                        <li>
-                                            <label for="waktu" class="me-5 fw-bold d-block">Waktu Pengerjaan</label>
-                                            <input type="text" name="waktu" id="waktu" class="form-control w-75">
-                                        </li>
                                     </ul>
                                 </div>
                                 <div class="modal-footer">
@@ -125,9 +121,8 @@
                         <table class="table table-bordered border-primary align-middle text-center  mx-auto" style="min-width: 1000px;">
                             <thead class="table-dark border-light">
                                 <tr>
-                                    <th style="width: 25%;">Pembuat Tugas</th>
-                                    <th style="width: 40%;">Judul Tugas</th>
-                                    <th style="width: 15%;">Waktu</th>
+                                    <th style="width: 30%;">Pembuat Tugas</th>
+                                    <th style="width: 55%;">Judul Tugas</th>
                                     <th style="min-width: 300px;">Aksi</th>
                                 </tr>
                             </thead>
@@ -136,13 +131,11 @@
                                     while ($row = mysqli_fetch_array($query)){
                                         $queryID = mysqli_query($koneksi, "SELECT * FROM user WHERE id='$row[id]'");
                                         $rowUser = mysqli_fetch_array($queryID);
-                                        $waktu = $row['waktu']/60;
                                         echo '
                                         <form action="function/hapusTugas.php?id_tugas='.$row['id_tugas'].'" method="post">
                                             <tr>
                                                 <td>'.$rowUser['nama'].'</td>
                                                 <td>'.$row['judul'].'</td>
-                                                <td>'.$waktu.' Menit</td>
                                                 <td>
                                                     <a href="soal.php?id_tugas='.$row['id_tugas'].'" class="btn btn-primary"><i class="fas fa-plus me-2"></i>Tambah Soal</a>
                                                     '?><button type="submit" class="btn btn-danger" onclick="return confirm('Hapus tugas?')"><i class="fas fa-trash me-2"></i>Hapus Tugas</button><?php echo '
