@@ -111,7 +111,7 @@
                                                 <td>'.$row['wa'].'</td>
                                                 <td>'.$row['alamat'].'</td>
                                                 <td>
-                                                    '?><button type="submit" class="btn btn-danger" onclick="return confirm('Hapus siswa?')"><i class="fas fa-trash me-2]"></i></button><?php echo '
+                                                    '?><button type="submit" class="btn btn-danger" onclick="return confirm('Hapus tugas?')"><i class="fas fa-trash me-2]"></i></button><?php echo '
                                                 </td>
                                             </tr>
                                         </form>';
