@@ -42,7 +42,7 @@
             $score = 100 / $jumlah_soal * $benar;
             $hasil = number_format($score,2);
         }
-        $insertNilai = mysqli_query($koneksi, "INSERT INTO nilai VALUES ('', '$id_tugas', '$id', '$hasil')");
+        $insertNilai = mysqli_query($koneksi, "INSERT INTO nilai VALUES (NULL, '$id_tugas', '$id', '$hasil')");
     }
 ?>
 
@@ -52,9 +52,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
-    <link rel="stylesheet" href="../../css/styles.css" />
-    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Nilai Tugas</title>
     <style>
         html,body{
             height: 100%;

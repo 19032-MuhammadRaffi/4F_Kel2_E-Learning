@@ -25,7 +25,7 @@
         if ($uploadOk == 0){
             echo '<script>alert("Nama file sudah ada!");</script>';
         } else if ($namaAsli=="") {
-            $tambahSoal = mysqli_query($koneksi, "INSERT INTO soal VALUES ('','$id_tugas','$soal','$namaAsli','$a','$b','$c','$d','$jawaban', NOW())") or die($koneksi);
+            $tambahSoal = mysqli_query($koneksi, "INSERT INTO soal VALUES (null,'$id_tugas','$soal','$namaAsli','$a','$b','$c','$d','$jawaban', NOW())") or die($koneksi);
             if ($tambahSoal){
                 echo "<script>alert('Soal berhasil ditambahkan!')
                 window.location.replace('soal.php?id_tugas=$id_tugas');</script>";
@@ -33,7 +33,7 @@
         }
         else {
             if (move_uploaded_file($asal, $targetFile)){
-                $tambahSoal = mysqli_query($koneksi, "INSERT INTO soal VALUES ('','$id_tugas','$soal','$nama','$a','$b','$c','$d','$jawaban', NOW())") or die($koneksi);
+                $tambahSoal = mysqli_query($koneksi, "INSERT INTO soal VALUES (null,'$id_tugas','$soal','$nama','$a','$b','$c','$d','$jawaban', NOW())") or die($koneksi);
                 if ($tambahSoal){
                     echo "<script>alert('Soal berhasil ditambahkan!')
                     window.location.replace('soal.php?id_tugas=$id_tugas');</script>";
